@@ -1,0 +1,20 @@
+{
+    "name": "mikamendonca/api-rest",
+    "description": "Projeto de API com Slim",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Mikamendonca\\ApiRest\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mikaele Mendonça",
+            "email": "mikaelemendonca@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.6"
+    }
+}
