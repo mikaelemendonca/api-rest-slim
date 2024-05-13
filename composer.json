@@ -1,0 +1,42 @@
+{
+    "name": "mikamendonca/api-rest",
+    "description": "Projeto de API com Slim",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "ApiRest\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mikaele Mendonça",
+            "email": "mikaelemendonca@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-Slim": "*",
+        "ext-redis": "*",
+        "ext-mongodb": "*",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.6",
+        "mongodb/mongodb": "^1.18"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "squizlabs/php_codesniffer": "*",
+        "phan/phan": "^5.4"
+    },
+    "scripts": {
+        "test": "phpunit tests",
+        "cs": "phpcs --standard=PSR12 src/",
+        "phan": "phan --allow-polyfill-parser",
+        "check": [
+            "@phan",
+            "@cs",
+            "@test"
+        ]        
+    },
+    "scripts-descriptions": {
+        "check": "Roda as verificações do código. PHAN, PHPCS e PHPUNIT"
+    }
+}
