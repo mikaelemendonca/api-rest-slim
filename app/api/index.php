@@ -7,7 +7,7 @@ use Slim\Factory\AppFactory;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
-$app->setBasePath('/api-rest-slim');
+$app->setBasePath('/api-rest-slim/app');
 // $app->addErrorMiddleware(true, true, true);
 
 $app->get("/", function (Request $request, Response $response, $args) {

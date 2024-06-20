@@ -1,0 +1,58 @@
+openapi: 3.0.0
+servers:
+  - description: API de teste
+    url: https://localhost.sunsetandsunrise.com/api/v1
+
+info:
+  version: "1.0.0"
+  title: Nascer e Pôr do Sol
+  description: Fornece informações sobre o tempo restante até o próximo nascer ou pôr do sol.
+
+paths:
+  /event:
+    get:
+      tags:
+        - Event
+      description: Retorna o tempo restante até a ocorrência do próximo evento (nascer ou pôr do sol).
+      operationId: getDevices
+      parameters:
+        - in: query
+          name: type
+          description: Type event 
+          required: true
+          schema:
+            type: string
+            enum:
+              - sunset
+              - sunrise
+        - in: query
+          name: latitude
+          description: Latitude
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: longitude
+          description: Longitude
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All the devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  remaing_time:
+                    type: string
+                    example: '00:12:24'
+                  exact_datetime:
+                    type: string
+                    example: '05-01-2024 05:23:55'
+                  request_datetime:
+                    type: string
+                    example: '05-01-2024 05:11:31'
+                  
+   
