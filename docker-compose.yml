@@ -1,0 +1,26 @@
+version: "1.0"
+
+services:
+  php:
+    image: php:8.2-fpm
+    volumes:
+      - ./app:/var/www/html/app/:rw
+      - ./docs:/var/www/html/docs/:rw
+      - ./docker/php/conf/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    container_name: php8.2
+
+  apache:
+    build:
+      context: "./docker/apache/"
+      args:
+        APACHE_VERSION: 2.4
+    depends_on:
+      - php
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/var/www/html/app
+      - ./docs:/var/www/html/docs
+      - ./docker/apache/logs:/var/log/apache2/
+      - ./docker/apache/demo.apache.conf:/usr/local/apache2/conf/demo.apache.conf:ro
+    container_name: apache2.4
