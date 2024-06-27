@@ -2,11 +2,13 @@ version: "1.0"
 
 services:
   php:
-    image: php:8.2-fpm
+    build:
+      context: "./docker/php/"
     volumes:
       - ./app:/var/www/html/app/:rw
       - ./docs:/var/www/html/docs/:rw
       - ./docker/php/conf/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./99-xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini
     container_name: php8.2
 
   apache:
